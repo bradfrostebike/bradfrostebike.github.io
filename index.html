@@ -32,13 +32,6 @@ body {
 }
     </style>
 
-        <script>
-        window.apicartConfig = window.apicartConfig || [];
-        function apicartConfigure(config){apicartConfig.push(config)}
-        apicartConfigure({
-            token: "kQ4saJH_Jjl7UKGumMrXwlBYyzDbBYuXyOk1x5WywJxom_vrlbqXa1j7V",
-        });
-    </script>
 </head>
 
 <body>
@@ -164,9 +157,16 @@ body {
 		</div>
 	</div>
 
+	<script src="./e-commerce.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://cdn.apicart.dev/v1/?components=all" async></script>
-	<script src="./e-commerce.js"></script>
+    <script>
+        window.apicartConfig = window.apicartConfig || [];
+        function apicartConfigure(config){apicartConfig.push(config)}
+        apicartConfigure({
+            token: "kQ4saJH_Jjl7UKGumMrXwlBYyzDbBYuXyOk1x5WywJxom_vrlbqXa1j7V",
+        });
+    </script>
 
 </body>
 
