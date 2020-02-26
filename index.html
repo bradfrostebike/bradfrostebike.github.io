@@ -1,1 +1,128 @@
-"Hello world! "
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>E-commerce via API</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="text-center py-5">My amazing E-commerce 💰</h1>
+
+		<div class="pb-5 d-flex flex-row justify-content-center">
+			<div class="mr-5 cart-dropdown"></div>
+			<a role="button" href="#delivery-information" class="btn btn-lg btn-danger text-white">Finish your order</a>
+		</div>
+
+		<div class="d-flex flex-row justify-content-between">
+			<div class="card mx-2">
+				<img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Product 1</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse sagittis ultrices augue. </p>
+					<div class="quantity-manipulator text-center" data-item-url="https://cdn.apicart.dev/external/wlhv1egho2u4p0e0nkne2mks7f9btigi/data/10/10.json"></div>
+				</div>
+			</div>
+
+			<div class="card mx-2">
+				<img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Product 2</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse sagittis ultrices augue. </p>
+					<div class="quantity-manipulator text-center" data-item-url="https://cdn.apicart.dev/external/wlhv1egho2u4p0e0nkne2mks7f9btigi/data/11/11.json"></div>
+				</div>
+			</div>
+
+			<div class="card mx-2">
+				<img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Product 3</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse sagittis ultrices augue. </p>
+					<div class="quantity-manipulator text-center" data-item-url="https://cdn.apicart.dev/external/wlhv1egho2u4p0e0nkne2mks7f9btigi/data/12/12.json"></div>
+				</div>
+			</div>
+
+			<div class="card mx-2">
+				<img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Product 4</h5>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse sagittis ultrices augue. </p>
+					<div class="quantity-manipulator text-center" data-item-url="https://cdn.apicart.dev/external/wlhv1egho2u4p0e0nkne2mks7f9btigi/data/14/14.json"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="delivery-information" class="shopping-steps bg-light p-2 my-5">
+			<h2 class="text-center py-3">Delivery Information</h2>
+
+			<form class="text-left col-6 ml-auto mr-auto">
+				<div class="d-flex flex-md-row">
+					<div class="col-12 col-md-6 pl-md-0 form-group">
+						<label for="payment-methods">Payment method</label>
+						<select class="custom-select mr-sm-2" id="payment-methods" data-apicart-cart-add-parameter="paymentMethod.id">
+							<option disabled selected>---</option>
+							{{foreach paymentMethods as paymentMethod}}
+								{{returnIf ! paymentMethod.all.enabled}}
+								<option value="{{$paymentMethod.all.id}}">{{$paymentMethod.all.name}}</option>
+							{{/foreach}}
+						</select>
+					</div>
+
+					<div class="col-12 col-md-6 pr-md-0 form-group">
+						<label for="shipping-methods">Delivery method</label>
+						<select class="custom-select mr-sm-2" id="shipping-methods" data-apicart-cart-add-parameter="shippingMethod.id">
+							<option disabled selected>---</option>
+							{{foreach shippingMethods as shippingMethod}}
+								{{returnIf ! shippingMethod.all.enabled}}
+								<option value="{{$shippingMethod.all.id}}">{{$shippingMethod.all.name}}</option>
+							{{/foreach}}
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="customer-email">Email address</label>
+					<input type="email" class="form-control" id="customer-email" placeholder="Enter email" data-apicart-cart-add-parameter="shippingAddress.email">
+				</div>
+
+				<div class="d-flex flex-md-row">
+					<div class="col-12 col-md-6 pl-md-0 form-group">
+						<label for="customer-first-name">First name</label>
+						<input type="text" class="form-control" id="customer-first-name" placeholder="First name" data-apicart-cart-add-parameter="shippingAddress.firstName">
+					</div>
+
+					<div class="col-12 col-md-6 pr-md-0 form-group">
+						<label for="customer-last-name">Last name</label>
+						<input type="text" class="form-control" id="customer-last-name" placeholder="Last name" data-apicart-cart-add-parameter="shippingAddress.lastName">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="customer-street-and-number">Street and number</label>
+					<input type="text" class="form-control" id="customer-street-and-number" placeholder="Street and number" data-apicart-cart-add-parameter="shippingAddress.streetAndNumber">
+				</div>
+
+				<div class="d-flex flex-md-row">
+					<div class="col-12 col-md-6 pl-md-0 form-group">
+						<label for="customer-city">City</label>
+						<input type="text" class="form-control" id="customer-city" placeholder="City" data-apicart-cart-add-parameter="shippingAddress.city">
+					</div>
+
+					<div class="col-12 col-md-6 pr-md-0 form-group">
+						<label for="customer-zip">Zip</label>
+						<input type="number" class="form-control" id="customer-zip" placeholder="Zip" data-apicart-cart-add-parameter="shippingAddress.zip">
+					</div>
+				</div>
+
+				<button class="btn btn-danger apicart-cart-finish">Finish order</button>
+			</form>
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://cdn.apicart.dev/v1/?components=all" async></script>
+	<script src="./e-commerce.js"></script>
+
+</body>
+
+</html>
